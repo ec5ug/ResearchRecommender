@@ -12,7 +12,6 @@ public class Driver {
             System.out.println("Enter C if you are interested in research opportunities with the College of Arts and " +
                     "Sciences or E if you are interested in research opportunities with the Engineering School");
             String institute = reader.next().toUpperCase();
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
             DataReader dr;
             if (institute.equals("C")) {
@@ -46,5 +45,9 @@ public class Driver {
         System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
                 "research opportunities");
         System.out.println("Please enter (S) if you are a student or (P) if you are a Project Manager");
+    }
+
+    private static void provideFilterMessage() {
+        System.out.println("The following categories are available. If you would like to ");
     }
 }

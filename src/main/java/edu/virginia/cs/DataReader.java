@@ -82,6 +82,8 @@ public class DataReader {
 
                     name = name.split(",")[0];
                     name = name.split("\\(")[0];
+                    name = name.split("and")[0];
+                    name = name.split("&")[0];
 
                     if (Period.between(date, LocalDate.now()).getYears() < DURATION) {
                         ResearchOpportunity ro = new ResearchOpportunity(title, new ProjectManager(name, ""), date, summary);
