@@ -15,9 +15,9 @@ public class Driver {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
             DataReader dr;
-            if (institute.equals('C')) {
-//                dr = new DataReader();
-//                dr.readData();
+            if (institute.equals("C")) {
+                dr = new DataReader("CAS_Research.xlsx");
+                dr.readData();
             }
             else if (institute.equals("E")) {
                 dr = new DataReader("SEAS_Research.xlsx");
@@ -46,6 +46,5 @@ public class Driver {
         System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
                 "research opportunities");
         System.out.println("Please enter (S) if you are a student or (P) if you are a Project Manager");
-
     }
 }

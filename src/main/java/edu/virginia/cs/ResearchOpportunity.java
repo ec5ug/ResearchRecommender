@@ -1,5 +1,6 @@
 package edu.virginia.cs;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class ResearchOpportunity {
@@ -8,12 +9,12 @@ public class ResearchOpportunity {
     protected Set<ResearchType> type;
     protected ProjectManager projectManager;
     protected boolean availability;
-    protected Date date;
+    protected LocalDate date;
     protected String summary;
 
     protected final int cutOffDate = 5;
 
-    public ResearchOpportunity(String title, ProjectManager projectManager, Date date, String summary) {
+    public ResearchOpportunity(String title, ProjectManager projectManager, LocalDate date, String summary) {
         this.title = title;
         this.type = determineType(summary);
         this.projectManager = projectManager;
@@ -27,7 +28,9 @@ public class ResearchOpportunity {
     }
 
     public String getTitle() {return this.title;}
+    public String getSummary() {return this.summary;};
 
+    public String getDate() {return this.date.toString();};
     protected void editSummary(String newSummary) {
         this.summary = newSummary;
     }
@@ -39,4 +42,5 @@ public class ResearchOpportunity {
     protected void setAvailability() {
         this.availability = true;
     }
+
 }
