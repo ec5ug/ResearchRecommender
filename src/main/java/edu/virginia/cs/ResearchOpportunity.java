@@ -4,14 +4,14 @@ import java.util.*;
 
 public class ResearchOpportunity {
     protected Set<ResearchType> type;
-    protected Professor professor;
+    protected ProjectManager projectManager;
     protected boolean availability;
     protected Date date;
     protected String summary;
 
-    public ResearchOpportunity(Professor professor, Date date, String summary) {
+    public ResearchOpportunity(ProjectManager projectManager, Date date, String summary) {
         this.type = determineType(summary);
-        this.professor = professor;
+        this.projectManager = projectManager;
         this.availability = true;
         this.date = date;
         this.summary = summary;

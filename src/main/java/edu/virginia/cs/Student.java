@@ -1,2 +1,4 @@
-package edu.virginia.cs;public class Student {
+package edu.virginia.cs;
+
+public class Student {
 }

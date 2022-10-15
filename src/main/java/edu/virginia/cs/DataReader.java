@@ -1,5 +1,5 @@
 package edu.virginia.cs;
 
-public class ResearchType {
+public class DataReader {
 
 }

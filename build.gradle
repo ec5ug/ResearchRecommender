@@ -2,6 +2,19 @@ plugins {
     id 'java'
 }
 
+jar {
+    archiveBaseName = "Mirabilius"
+    manifest {
+        attributes "Main-Class": "edu.virginia.cs.Driver"
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
