@@ -11,7 +11,7 @@ public class Driver {
         String role = reader.next().toUpperCase();
         if (isStudent(role)) {
             System.out.println("Enter C if you are interested in research opportunities with the College of Arts and " +
-                    "Sciences or E if you are interested in research opportunities with the Engineering School");
+                    "Sciences or E if you are interested in research opportunities with the Engineering School: ");
             String institute = reader.next().toUpperCase();
             DataReader dr;
             if (institute.equals("C")) {
@@ -32,7 +32,7 @@ public class Driver {
 
         }
         else
-            throw new IllegalArgumentException("Must enter S(tudent) or P(roject Manager) for role. Please tru again");
+            throw new IllegalArgumentException("Must enter S(tudent) or P(roject Manager) for role. Please try again");
     }
 
     private static boolean isProjectManager(String role) {
@@ -46,7 +46,7 @@ public class Driver {
     private static void welcomeMessage() {
         System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
                 "research opportunities");
-        System.out.println("Please enter (S) if you are a student or (P) if you are a Project Manager");
+        System.out.println("Please enter (S) if you are a student or (P) if you are a Project Manager: ");
     }
 
     private static HashMap<String, Boolean> filterCategories() {
@@ -62,7 +62,7 @@ public class Driver {
                     mark = 'x';
                 System.out.println(mark + " " + key);
             }
-            System.out.print(" Would you like to proceed with this selection? (Y/N): ");
+            System.out.print("Would you like to proceed with this selection? (Y/N): ");
             if (reader.next().toUpperCase().equals("Y"))
                 toContinue = false;
 

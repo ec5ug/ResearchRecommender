@@ -20,7 +20,7 @@ public class DataReader {
 
     private int PROJECT_MANAGER_COLUMN_INDEX;
     private int EMAIL_COLUMN_INDEX;
-    private final int DURATION  = 1;
+    private final int DURATION  = 2;
 
     public DataReader(String filename) {
         this.filename = filename;
@@ -83,7 +83,9 @@ public class DataReader {
                 summary = row.getCell(SUMMARY_COLUMN_INDEX).getStringCellValue().strip();
                 String sDate = dataFormatter.formatCellValue(row.getCell(DATE_POSTED_COLUMN_INDEX));
                 String name = row.getCell(PROJECT_MANAGER_COLUMN_INDEX).getStringCellValue().strip();
-                String email = row.getCell(EMAIL_COLUMN_INDEX).getStringCellValue().strip();
+                String email = "not present (see UVA Internal Peoples Search)";
+                if (row.getCell(EMAIL_COLUMN_INDEX) != null)
+                    email = row.getCell(EMAIL_COLUMN_INDEX).getStringCellValue().strip();
                 if (!title.equals("") && sDate.matches(".*[0-9].*")) {
                     String[] arr = sDate.split("/");
                     arr[2] = "20" + arr[2];
