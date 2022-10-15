@@ -3,6 +3,7 @@ package edu.virginia.cs;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -20,6 +21,8 @@ public class DataReader {
     private int SUMMARY_COLUMN_INDEX;
     private int DATE_POSTED_COLUMN_INDEX;
 
+    private final int DURATION  = 2;
+
     public DataReader(String filename) {
         this.filename = filename;
         this.researchList = new ArrayList<ResearchOpportunity>();
@@ -32,7 +35,7 @@ public class DataReader {
             generateXSSFSheet();
             this.TITLE_COLUMN_INDEX = colInd("Project Title");
             this.SUMMARY_COLUMN_INDEX = colInd("Short Description of Work");
-            this.DATE_POSTED_COLUMN_INDEX = colInd("Date Posted");
+            this.DATE_POSTED_COLUMN_INDEX = colInd("Date");
             convertExcelToArrayList();
             printResearchList();
         }
@@ -51,7 +54,7 @@ public class DataReader {
         Iterator<Row> rowIterator = sheet.iterator();
         Row row = rowIterator.next();
         for (int i = 0; i < row.getLastCellNum(); i ++) {
-            if (row.getCell(i).getStringCellValue().strip().equals(colName))
+            if (row.getCell(i).getStringCellValue().strip().contains(colName))
                     return i;
         }
         return -1;
@@ -72,9 +75,10 @@ public class DataReader {
                     String[] arr = sDate.split("/");
                     arr[2] = "20" + arr[2];
                     LocalDate date = LocalDate.of(Integer.parseInt(arr[2]), Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
-                    System.out.println(date);
-                    ResearchOpportunity ro = new ResearchOpportunity(title, null, date, summary);
-                    researchList.add(ro);
+                    if (Period.between(date, LocalDate.now()).getYears() < DURATION) {
+                        ResearchOpportunity ro = new ResearchOpportunity(title, null, date, summary);
+                        researchList.add(ro);
+                    }
                 }
             }
         }
