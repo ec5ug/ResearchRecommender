@@ -26,15 +26,17 @@ public class ResearchOpportunity {
         return null;
     }
 
-    private void editSummary(String newSummary) {
+    public String getTitle() {return this.title;}
+
+    protected void editSummary(String newSummary) {
         this.summary = newSummary;
     }
 
-    private void setUnavailability() {
+    protected void setUnavailability() {
         this.availability = false;
     }
 
-    private void setAvailability() {
+    protected void setAvailability() {
         this.availability = true;
     }
 }

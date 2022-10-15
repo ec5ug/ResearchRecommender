@@ -1,6 +1,5 @@
 package edu.virginia.cs;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Driver {
@@ -13,11 +12,16 @@ public class Driver {
             System.out.println("Enter C if you are interested in research opportunities with the College of Arts and " +
                     "Sciences or E if you are interested in research opportunities with the Engineering School");
             String institute = reader.next().toUpperCase();
-            if (institute.equals('C')) {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
+            DataReader dr;
+            if (institute.equals('C')) {
+//                dr = new DataReader();
+//                dr.readData();
             }
             else if (institute.equals("E")) {
-
+                dr = new DataReader("SEAS_Research.xlsx");
+                dr.readData();
             }
             else
                 throw new IllegalArgumentException("Must enter C(ollege of Arts and Science) or E(ngineering School) to " +

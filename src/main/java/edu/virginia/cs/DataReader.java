@@ -1,11 +1,10 @@
 package edu.virginia.cs;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
-import java.io.File;
+
 import java.io.FileInputStream;
 
 public class DataReader {
@@ -15,10 +14,13 @@ public class DataReader {
 
     public DataReader(String filename) {
         this.filename = filename;
+        this.researchList = new ArrayList<ResearchOpportunity>();
     }
     public void readData() {
         try {
             generateXSSFSheet();
+            convertExcelToArrayList();
+            printResearchList();
         }
         catch (IOException e){
             throw new RuntimeException(e);
@@ -32,5 +34,25 @@ public class DataReader {
         sheet = workbook.getSheetAt(0);
     }
 
+    protected void convertExcelToArrayList() {
+        Iterator<Row> rowIterator = sheet.iterator();
+        rowIterator.next();
+        rowIterator.next();
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+            String title = "";
+            if (row.getCell(2) != null) {
+                title = row.getCell(2).getStringCellValue().strip();
+                ResearchOpportunity ro = new ResearchOpportunity(title, null, null, "lol");
+                researchList.add(ro);
+            }
+        }
+    }
+
+    protected void printResearchList() {
+        for (int i = 0; i < researchList.size(); i++) {
+            System.out.println(researchList.get(i).getTitle());
+        }
+    }
 
 }
