@@ -22,7 +22,7 @@ public class DataReader {
     private int DATE_POSTED_COLUMN_INDEX;
 
     private int PROJECT_MANAGER_COLUMN_INDEX;
-    private final int DURATION  = 2;
+    private final int DURATION  = 1;
 
     public DataReader(String filename) {
         this.filename = filename;

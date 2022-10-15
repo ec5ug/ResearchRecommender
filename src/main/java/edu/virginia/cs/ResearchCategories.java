@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 
 public class ResearchCategories {
@@ -33,4 +32,5 @@ public class ResearchCategories {
         } catch (IOException e) {}
         return tempSet;
     }
+
 }
