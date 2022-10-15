@@ -16,10 +16,21 @@ public class DataReader {
     public DataReader(String filename) {
         this.filename = filename;
     }
+    public void readData() {
+        try {
+            generateXSSFSheet();
+        }
+        catch (IOException e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
     protected void generateXSSFSheet() throws IOException {
         FileInputStream file = new FileInputStream(new File(this.filename));
         XSSFWorkbook workbook = new XSSFWorkbook(file);
         sheet = workbook.getSheetAt(0);
     }
+
 
 }

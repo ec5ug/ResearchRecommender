@@ -3,6 +3,8 @@ package edu.virginia.cs;
 import java.util.*;
 
 public class ResearchOpportunity {
+
+    protected String title;
     protected Set<ResearchType> type;
     protected ProjectManager projectManager;
     protected boolean availability;
@@ -11,7 +13,8 @@ public class ResearchOpportunity {
 
     protected final int cutOffDate = 5;
 
-    public ResearchOpportunity(ProjectManager projectManager, Date date, String summary) {
+    public ResearchOpportunity(String title, ProjectManager projectManager, Date date, String summary) {
+        this.title = title;
         this.type = determineType(summary);
         this.projectManager = projectManager;
         this.availability = true;
