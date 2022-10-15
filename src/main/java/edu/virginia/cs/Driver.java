@@ -52,7 +52,7 @@ public class Driver {
     private static HashMap<String, Boolean> filterCategories() {
         Scanner reader = new Scanner(System.in);
         boolean toContinue = true;
-        String input4deselect = "";
+        String input4deselect;
         HashMap<String, Boolean> data = (new ResearchCategories()).getCategories();
         while (toContinue) {
             System.out.println("The following categories will be searched for.");
@@ -63,7 +63,7 @@ public class Driver {
                 System.out.println(mark + " " + key);
             }
             System.out.print("Would you like to proceed with this selection? (Y/N): ");
-            if (reader.next().toUpperCase().equals("Y"))
+            if (reader.next().equalsIgnoreCase("Y"))
                 toContinue = false;
 
             if (toContinue) {
