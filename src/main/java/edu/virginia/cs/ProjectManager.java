@@ -9,4 +9,15 @@ public class ProjectManager {
         this.email = email;
     }
 
+    protected void setName(String name) {
+        this.name = name;
+    }
+
+    protected void setEmail(String email) {
+        this.email = email;
+    }
+
+    protected String getName() {return this.name;}
+    protected String getEmail() {return this.email;}
+
 }
