@@ -82,7 +82,7 @@ public class DataReader {
 
     protected void printResearchList() {
         for (int i = 0; i < researchList.size(); i++) {
-            System.out.println(researchList.get(i).getTitle());
+            System.out.println(researchList.get(i).getTitle() + "| Date Posted: " + researchList.get(i).getDate());
             System.out.println(researchList.get(i).getSummary());
             System.out.println("-------------------------------------------------------------------------------------");
         }
