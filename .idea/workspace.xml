@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="949cfab3-8666-4412-937d-7e8848970410" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/CollegeDataReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/EngineeringDataReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/ResearchOpportunity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/ResearchOpportunity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/CollegeDataReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/DataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/EngineeringDataReader.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,36 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ResearchRecommender" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ResearchRecommender" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ResearchRecommender" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">

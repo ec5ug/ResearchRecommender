@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
+    runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.18.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
