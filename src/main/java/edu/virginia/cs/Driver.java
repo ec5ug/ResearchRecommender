@@ -9,13 +9,33 @@ public class Driver {
         welcomeMessage();
         Scanner reader = new Scanner(System.in);
         String role = reader.next().toUpperCase();
-        if (role.equals("S"))
-            System.out.println("Student");
-        else if (role.equals("P"))
-            System.out.println("Project Manager");
+        if (isStudent(role)) {
+            System.out.println("Enter C if you are interested in research opportunities with the College of Arts and " +
+                    "Sciences or E if you are interested in research opportunities with the Engineering School");
+            String institute = reader.next().toUpperCase();
+            if (institute.equals('C')) {
+
+            }
+            else if (institute.equals("E")) {
+
+            }
+            else
+                throw new IllegalArgumentException("Must enter C(ollege of Arts and Science) or E(ngineering School) to " +
+                        "view applicable research opportunities");
+        }
+        else if (isProjectManager(role)) {
+
+        }
         else
             throw new IllegalArgumentException("Must enter S(tudent) or P(roject Manager) for role. Please tru again");
+    }
 
+    private static boolean isProjectManager(String role) {
+        return role.equals("P");
+    }
+
+    private static boolean isStudent(String role) {
+        return role.equals("S");
     }
 
     private static void welcomeMessage() {

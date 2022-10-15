@@ -9,6 +9,8 @@ public class ResearchOpportunity {
     protected Date date;
     protected String summary;
 
+    protected final int cutOffDate = 5;
+
     public ResearchOpportunity(ProjectManager projectManager, Date date, String summary) {
         this.type = determineType(summary);
         this.projectManager = projectManager;
