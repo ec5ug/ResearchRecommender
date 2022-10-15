@@ -33,4 +33,7 @@ public class ResearchCategories {
         return tempSet;
     }
 
+    protected HashMap<String, Boolean> getCategories() {
+        return this.categories;
+    }
 }

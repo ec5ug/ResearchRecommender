@@ -1,11 +1,8 @@
 package edu.virginia.cs;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.chrono.ChronoLocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
@@ -32,14 +29,15 @@ public class DataReader {
         this.DATE_POSTED_COLUMN_INDEX = -1;
         this.PROJECT_MANAGER_COLUMN_INDEX = -1;
     }
-    public void readData() {
+
+    public void readData(HashMap<String, Boolean> data) {
         try {
             generateXSSFSheet();
             this.TITLE_COLUMN_INDEX = colInd("Project Title");
             this.SUMMARY_COLUMN_INDEX = colInd("Short Description of Work");
             this.DATE_POSTED_COLUMN_INDEX = colInd("Date");
             this.PROJECT_MANAGER_COLUMN_INDEX = colInd("Name");
-            convertExcelToArrayList();
+            convertExcelToArrayList(data);
             printResearchList();
         }
         catch (IOException e){
@@ -63,7 +61,12 @@ public class DataReader {
         return -1;
     }
 
-    protected void convertExcelToArrayList() {
+    protected void convertExcelToArrayList(HashMap<String, Boolean> data) {
+        HashSet<String> dontWant = new HashSet<String>();
+        for (String key: data.keySet()) {
+            if(!data.get(key))
+                dontWant.add(key);
+        }
         Iterator<Row> rowIterator = sheet.iterator();
         DataFormatter dataFormatter = new DataFormatter();
         while (rowIterator.hasNext()) {
@@ -87,7 +90,8 @@ public class DataReader {
 
                     if (Period.between(date, LocalDate.now()).getYears() < DURATION) {
                         ResearchOpportunity ro = new ResearchOpportunity(title, new ProjectManager(name, ""), date, summary);
-                        researchList.add(ro);
+                        if (Collections.disjoint(ro.getType(), dontWant))
+                            researchList.add(ro);
                     }
                 }
             }

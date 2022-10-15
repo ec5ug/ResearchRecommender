@@ -1,7 +1,5 @@
 package edu.virginia.cs;
 
-import org.apache.poi.hssf.record.ScenarioProtectRecord;
-
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -15,18 +13,16 @@ public class Driver {
             System.out.println("Enter C if you are interested in research opportunities with the College of Arts and " +
                     "Sciences or E if you are interested in research opportunities with the Engineering School");
             String institute = reader.next().toUpperCase();
-
-            provideFilterMessage();
-
-
             DataReader dr;
             if (institute.equals("C")) {
+                HashMap<String, Boolean> cat = filterCategories();
                 dr = new DataReader("CAS_Research.xlsx");
-                dr.readData();
+                dr.readData(cat);
             }
             else if (institute.equals("E")) {
+                HashMap<String, Boolean> cat = filterCategories();
                 dr = new DataReader("SEAS_Research.xlsx");
-                dr.readData();
+                dr.readData(cat);
             }
             else
                 throw new IllegalArgumentException("Must enter C(ollege of Arts and Science) or E(ngineering School) to " +
@@ -53,11 +49,11 @@ public class Driver {
         System.out.println("Please enter (S) if you are a student or (P) if you are a Project Manager");
     }
 
-    private static void provideFilterMessage() {
+    private static HashMap<String, Boolean> filterCategories() {
         Scanner reader = new Scanner(System.in);
         boolean toContinue = true;
         String input4deselect = "";
-        HashMap<String, Boolean> data = (new ResearchCategories()).categories;
+        HashMap<String, Boolean> data = (new ResearchCategories()).getCategories();
         while (toContinue) {
             System.out.println("The following categories will be searched for.");
             for (String key: data.keySet()) {
@@ -66,7 +62,7 @@ public class Driver {
                     mark = 'x';
                 System.out.println(mark + " " + key);
             }
-            System.out.print(" Would you like to proceed with this selection? (Y/N)");
+            System.out.print(" Would you like to proceed with this selection? (Y/N): ");
             if (reader.next().toUpperCase().equals("Y"))
                 toContinue = false;
 
@@ -76,5 +72,6 @@ public class Driver {
                 data.put(input4deselect, false);
             }
         }
+        return data;
     }
 }
