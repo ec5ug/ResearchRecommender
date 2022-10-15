@@ -19,6 +19,7 @@ public class DataReader {
     private int DATE_POSTED_COLUMN_INDEX;
 
     private int PROJECT_MANAGER_COLUMN_INDEX;
+    private int EMAIL_COLUMN_INDEX;
     private final int DURATION  = 1;
 
     public DataReader(String filename) {
@@ -28,6 +29,7 @@ public class DataReader {
         this.SUMMARY_COLUMN_INDEX = -1;
         this.DATE_POSTED_COLUMN_INDEX = -1;
         this.PROJECT_MANAGER_COLUMN_INDEX = -1;
+        this.EMAIL_COLUMN_INDEX = -1;
     }
 
     public void readData(HashMap<String, Boolean> data) {
@@ -37,6 +39,9 @@ public class DataReader {
             this.SUMMARY_COLUMN_INDEX = colInd("Short Description of Work");
             this.DATE_POSTED_COLUMN_INDEX = colInd("Date");
             this.PROJECT_MANAGER_COLUMN_INDEX = colInd("Name");
+            this.EMAIL_COLUMN_INDEX = colInd("Link");
+            if (this.EMAIL_COLUMN_INDEX < 0)
+                this.EMAIL_COLUMN_INDEX = colInd("Email");
             convertExcelToArrayList(data);
             printResearchList();
         }
@@ -78,6 +83,7 @@ public class DataReader {
                 summary = row.getCell(SUMMARY_COLUMN_INDEX).getStringCellValue().strip();
                 String sDate = dataFormatter.formatCellValue(row.getCell(DATE_POSTED_COLUMN_INDEX));
                 String name = row.getCell(PROJECT_MANAGER_COLUMN_INDEX).getStringCellValue().strip();
+                String email = row.getCell(EMAIL_COLUMN_INDEX).getStringCellValue().strip();
                 if (!title.equals("") && sDate.matches(".*[0-9].*")) {
                     String[] arr = sDate.split("/");
                     arr[2] = "20" + arr[2];
@@ -88,8 +94,10 @@ public class DataReader {
                     name = name.split("and")[0];
                     name = name.split("&")[0];
 
+                    email = email.split(",")[0];
+
                     if (Period.between(date, LocalDate.now()).getYears() < DURATION) {
-                        ResearchOpportunity ro = new ResearchOpportunity(title, new ProjectManager(name, ""), date, summary);
+                        ResearchOpportunity ro = new ResearchOpportunity(title, new ProjectManager(name, email), date, summary);
                         if (Collections.disjoint(ro.getType(), dontWant))
                             researchList.add(ro);
                     }
@@ -100,8 +108,9 @@ public class DataReader {
 
     protected void printResearchList() {
         for (int i = 0; i < researchList.size(); i++) {
-            System.out.println(researchList.get(i).getTitle() + " | Project Manager: " +
-                    researchList.get(i).getProjectManager().getName());
+            System.out.println(researchList.get(i).getTitle());
+            System.out.println("Project Manager: " + researchList.get(i).getProjectManager().getName() +
+                    " | Email: " + researchList.get(i).getProjectManager().getEmail());
             System.out.println("Tag List: " + researchList.get(i).getType());
             System.out.println("Date Posted: " + researchList.get(i).getDate()); // DELETE WHEN DONE
             System.out.println(researchList.get(i).getSummary());
