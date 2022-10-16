@@ -4,9 +4,10 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
-
 import java.io.FileInputStream;
 
 public class DataReader {
@@ -163,15 +164,51 @@ public class DataReader {
     }
 
     protected void printResearchList() {
+        final int ROW_LENGTH = 140;
+        final double NAME_FACTOR = 0.50;
+        final double MANAGER_FACTOR = 0.2;
+        final double EMAIL_FACTOR = 0.3;
+
+        String strFormat = "%-" + Integer.toString((int) (ROW_LENGTH*NAME_FACTOR)) + "s|%-" +
+                Integer.toString((int)(ROW_LENGTH * MANAGER_FACTOR)) + "s|%-" +
+                Integer.toString((int)(ROW_LENGTH * EMAIL_FACTOR)) + "s";
         for (int i = 0; i < researchList.size(); i++) {
-            System.out.println(researchList.get(i).getTitle());
-            System.out.println("Project Manager: " + researchList.get(i).getProjectManager().getName() +
-                    " | For more info: " + researchList.get(i).getProjectManager().getEmail());
+            for (int j = 0; j < (int)(ROW_LENGTH*1.01); j++) {
+                System.out.print('=');
+            }
+            System.out.print("\n");
+            String name = "";
+            if (researchList.get(i).getTitle().length() > (int) (ROW_LENGTH*NAME_FACTOR)) {
+                int b4Space = (int)(ROW_LENGTH*NAME_FACTOR);
+                while (researchList.get(i).getTitle().charAt(b4Space) != ' ')
+                    b4Space--;
+                name = researchList.get(i).getTitle().substring(0,b4Space);
+            }
+            else
+                name = researchList.get(i).getTitle();
+
+            System.out.format(strFormat, name,
+                    "Lead: " + researchList.get(i).getProjectManager().getName(),
+                    "More info: " + researchList.get(i).getProjectManager().getEmail());
+            System.out.print("\n");
+            for (int j = 0; j < (int)(ROW_LENGTH*1.01); j++) {
+                System.out.print('-');
+            }
+            System.out.print("\n");
             System.out.println("Tag List: " + researchList.get(i).getType());
             System.out.println("Date Posted: " + researchList.get(i).getDate()); // DELETE WHEN DONE
-            System.out.println(researchList.get(i).getSummary());
-            System.out.println("-------------------------------------------------------------------------------------");
+            String temp = researchList.get(i).getSummary();
+            int ind = 0;
+            while (ind < temp.length()) {
+                int end = ind + ROW_LENGTH;
+                if (end > temp.length())
+                    end = temp.length()-1;
+                System.out.println(temp.substring(ind,end));
+                ind = end;
+                if (ind == temp.length()-1)
+                    ind = temp.length()+1;
+            }
+            System.out.println();
         }
     }
-
 }

@@ -57,17 +57,12 @@ public class Driver {
         boolean toContinue = true;
         String input4deselect;
         HashMap<String, Boolean> data = (new ResearchCategories()).getCategories();
+        
         while (toContinue) {
             System.out.println("The following categories will be searched for.");
-            for (String key: data.keySet()) {
-                char mark = ' ';
-                if (data.get(key))
-                    mark = 'x';
-                System.out.println(mark + " " + key);
-            }
+            printHashMap(data);
             System.out.print("Would you like to proceed with this selection? (Y/N): ");
-            if (reader.next().equalsIgnoreCase("Y"))
-                toContinue = false;
+            toContinue = updateToUserInput(reader, toContinue);
 
             if (toContinue) {
                 System.out.print("Which category would you like to deselect? Enter only one: ");
@@ -76,5 +71,20 @@ public class Driver {
             }
         }
         return data;
+    }
+
+    private static boolean updateToUserInput(Scanner reader, boolean toContinue) {
+        if (reader.next().equalsIgnoreCase("Y"))
+            toContinue = false;
+        return toContinue;
+    }
+
+    private static void printHashMap(HashMap<String, Boolean> data) {
+        for (String key: data.keySet()) {
+            char mark = ' ';
+            if (data.get(key))
+                mark = 'x';
+            System.out.println(mark + " " + key);
+        }
     }
 }
