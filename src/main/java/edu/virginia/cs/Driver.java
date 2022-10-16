@@ -28,14 +28,6 @@ public class Driver {
         dr.readData(cat);
     }
 
-    private static boolean isProjectManager(String role) {
-        return role.equals("P");
-    }
-
-    private static boolean isStudent(String role) {
-        return role.equals("S");
-    }
-
     private static void welcomeMessage() {
         System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
                 "research opportunities");
