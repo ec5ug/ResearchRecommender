@@ -181,8 +181,8 @@ public class DataReader {
             printDivider('=');
             printHeader(strFormat, title, name, email);
             printDivider('-');
-            System.out.println("Tag List: " + researchList.get(i).getType());
-            System.out.println("Date Posted: " + researchList.get(i).getDate()); // DELETE WHEN DONE
+//            System.out.println("Tag List: " + researchList.get(i).getType());
+//            System.out.println("Date Posted: " + researchList.get(i).getDate()); // DELETE WHEN DONE
             printSummary(summary);
             System.out.println();
         }

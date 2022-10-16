@@ -68,6 +68,7 @@ public class Driver {
                 input4deselect = reader.next();
                 data.put(input4deselect, false);
             }
+            DataReader.printDivider('-');
         }
         return data;
     }
