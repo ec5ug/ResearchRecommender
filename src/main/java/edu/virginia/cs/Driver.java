@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main(String[] args) {
-        displayIcon();
         welcomeMessage();
         chooseFileToRead();
     }
@@ -45,8 +44,9 @@ public class Driver {
     }
 
     private static void welcomeMessage() {
-        System.out.println("MIRABILIS: an application that cuts through the noise of UVA's CS underegrad research opportunities");
         DataReader.printDivider('=');
+        System.out.println("Welcome to MIRABILIS: an application that cuts through the noise of UVA's CS underegrad research opportunities");
+        displayIcon();
         System.out.print("Enter C if you are interested in research opportunities with the College of Arts and " +
                 "Sciences or E if you are interested in research\nopportunities with the Engineering School: ");
     }
