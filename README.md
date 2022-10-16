@@ -15,6 +15,9 @@ Emily Chang: ec5ug@virginia.edu
 This project was completed at the University of Virginia's 2022 Girls Hoo Hack Hackathon. This project would have not 
 been possible without CS 3140 Software Development course material.
 
+This project could not have been possible without these two individuals who helped me in the ideation of this project:
+Shoug Alharbi and Yasmeen Ofleh.
+
 ## How to Set Up
 ### Cloning the Repository
 To build this program, you must first have a GitHub account and create a personal authentication token. To do this, go

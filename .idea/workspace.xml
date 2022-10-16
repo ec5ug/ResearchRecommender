@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="949cfab3-8666-4412-937d-7e8848970410" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build/libs/Mirabilius-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Mirabilius-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/DataReader.java" afterDir="false" />
-    </list>
+    <list default="true" id="949cfab3-8666-4412-937d-7e8848970410" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
