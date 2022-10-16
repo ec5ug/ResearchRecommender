@@ -23,7 +23,7 @@ public class DataReader {
     private int EMAIL_COLUMN_INDEX;
     private final int DURATION  = 2;
 
-    final int ROW_LENGTH = 140;
+    static final int ROW_LENGTH = 140;
     final double NAME_FACTOR = 0.50;
     final double MANAGER_FACTOR = 0.2;
     final double EMAIL_FACTOR = 0.3;
@@ -226,7 +226,7 @@ public class DataReader {
         return name;
     }
 
-    private void printDivider(char marker) {
+    protected static void printDivider(char marker) {
         for (int j = 0; j < (int)(ROW_LENGTH *1.01); j++) {
             System.out.print(marker);
         }

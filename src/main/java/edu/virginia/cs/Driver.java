@@ -6,12 +6,28 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main(String[] args) {
+        displayIcon();
         welcomeMessage();
         chooseFileToRead();
     }
+
+    private static void displayIcon() {
+        System.out.println("._____. ._____.");
+        System.out.println("| ._. | | ._. |");
+        System.out.println("| !_| |_|_|_! |");
+        System.out.println("!___| |_______!");
+        System.out.println(".___|_|_| |___.");
+        System.out.println("| ._____| |_. |");
+        System.out.println("| !_! | | !_! |");
+        System.out.println("!_____! !_____!");
+        System.out.println("Ascii art from https://www.asciiart.eu/art-and-design/escher");
+        DataReader.printDivider('=');
+    }
+
     private static void chooseFileToRead() {
         Scanner reader = new Scanner(System.in);
         String institute = reader.next().toUpperCase();
+        DataReader.printDivider('=');
         if (institute.equals("C"))
             executeDataRead("CAS_Research.xlsx");
         else if (institute.equals("E"))
@@ -29,10 +45,10 @@ public class Driver {
     }
 
     private static void welcomeMessage() {
-        System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
-                "research opportunities");
+        System.out.println("MIRABILIS: an application that cuts through the noise of UVA's CS underegrad research opportunities");
+        DataReader.printDivider('=');
         System.out.print("Enter C if you are interested in research opportunities with the College of Arts and " +
-                "Sciences or E if you are interested in research opportunities with the Engineering School: ");
+                "Sciences or E if you are interested in research\nopportunities with the Engineering School: ");
     }
 
     private static HashMap<String, Boolean> filterCategories() {
