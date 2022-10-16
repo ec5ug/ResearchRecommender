@@ -7,28 +7,18 @@ public class Driver {
 
     public static void main(String[] args) {
         welcomeMessage();
+        chooseFileToRead();
+    }
+    private static void chooseFileToRead() {
         Scanner reader = new Scanner(System.in);
-        String role = reader.next().toUpperCase();
-        if (isStudent(role)) {
-            System.out.print("Enter C if you are interested in research opportunities with the College of Arts and" +
-                    "Sciences or E if you are interested in research opportunities with the Engineering School: ");
-            String institute = reader.next().toUpperCase();
-            DataReader dr;
-            if (institute.equals("C")) {
-                executeDataRead("CAS_Research.xlsx");
-            }
-            else if (institute.equals("E")) {
-                executeDataRead("SEAS_Research.xlsx");
-            }
-            else
-                throw new IllegalArgumentException("Must enter C(ollege of Arts and Science) or E(ngineering School) to " +
-                        "view applicable research opportunities");
-        }
-        else if (isProjectManager(role)) {
-
-        }
+        String institute = reader.next().toUpperCase();
+        if (institute.equals("C"))
+            executeDataRead("CAS_Research.xlsx");
+        else if (institute.equals("E"))
+            executeDataRead("SEAS_Research.xlsx");
         else
-            throw new IllegalArgumentException("Must enter S(tudent) or P(roject Manager) for role. Please try again");
+            throw new IllegalArgumentException("Must enter C(ollege of Arts and Science) or E(ngineering School) to " +
+                    "view applicable research opportunities");
     }
 
     private static void executeDataRead(String filename) {
@@ -49,7 +39,8 @@ public class Driver {
     private static void welcomeMessage() {
         System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
                 "research opportunities");
-        System.out.print("Please enter (S) if you are a student or (P) if you are a Project Manager: ");
+        System.out.print("Enter C if you are interested in research opportunities with the College of Arts and " +
+                "Sciences or E if you are interested in research opportunities with the Engineering School: ");
     }
 
     private static HashMap<String, Boolean> filterCategories() {
