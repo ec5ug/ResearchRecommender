@@ -10,19 +10,15 @@ public class Driver {
         Scanner reader = new Scanner(System.in);
         String role = reader.next().toUpperCase();
         if (isStudent(role)) {
-            System.out.println("Enter C if you are interested in research opportunities with the College of Arts and " +
+            System.out.print("Enter C if you are interested in research opportunities with the College of Arts and" +
                     "Sciences or E if you are interested in research opportunities with the Engineering School: ");
             String institute = reader.next().toUpperCase();
             DataReader dr;
             if (institute.equals("C")) {
-                HashMap<String, Boolean> cat = filterCategories();
-                dr = new DataReader("CAS_Research.xlsx");
-                dr.readData(cat);
+                executeDataRead("CAS_Research.xlsx");
             }
             else if (institute.equals("E")) {
-                HashMap<String, Boolean> cat = filterCategories();
-                dr = new DataReader("SEAS_Research.xlsx");
-                dr.readData(cat);
+                executeDataRead("SEAS_Research.xlsx");
             }
             else
                 throw new IllegalArgumentException("Must enter C(ollege of Arts and Science) or E(ngineering School) to " +
@@ -33,6 +29,13 @@ public class Driver {
         }
         else
             throw new IllegalArgumentException("Must enter S(tudent) or P(roject Manager) for role. Please try again");
+    }
+
+    private static void executeDataRead(String filename) {
+        DataReader dr;
+        HashMap<String, Boolean> cat = filterCategories();
+        dr = new DataReader(filename);
+        dr.readData(cat);
     }
 
     private static boolean isProjectManager(String role) {
@@ -46,7 +49,7 @@ public class Driver {
     private static void welcomeMessage() {
         System.out.println("Welcome to the Mirabilis System: an application that cuts through the noise of UVA's " +
                 "research opportunities");
-        System.out.println("Please enter (S) if you are a student or (P) if you are a Project Manager: ");
+        System.out.print("Please enter (S) if you are a student or (P) if you are a Project Manager: ");
     }
 
     private static HashMap<String, Boolean> filterCategories() {
