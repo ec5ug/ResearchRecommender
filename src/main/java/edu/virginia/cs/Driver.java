@@ -45,7 +45,7 @@ public class Driver {
 
     private static void welcomeMessage() {
         DataReader.printDivider('=');
-        System.out.println("Welcome to MIRABILIS: an application that cuts through the noise of UVA's CS underegrad research opportunities");
+        System.out.println("Welcome to MIRABILIUS: an application that cuts through the noise of UVA's CS underegrad research opportunities");
         displayIcon();
         System.out.print("Enter C if you are interested in research opportunities with the College of Arts and " +
                 "Sciences or E if you are interested in research\nopportunities with the Engineering School: ");
